@@ -1,9 +1,163 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import Header from "../components/Header";
+import { Box, Button, Card, Modal } from "@mantine/core";
+import TransactionForm from "../components/TransactionForm";
+import { showNotification } from "@mantine/notifications";
+import { useDispatch } from "react-redux";
+import { HideLoading, ShowLoading } from "../redux/alertSlice";
+import { fireDb } from "../firebaseConfig";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import TransactionTable from "../components/TransactionTable";
+import Filters from "../components/Filters";
+import moment from "moment/moment";
 
 function Home() {
+  const [filters, setFilters] = React.useState({
+    type: "",
+    frequency: "7",
+    dateRange: [],
+  });
+  const user = JSON.parse(localStorage.getItem("user"));
+  const dispatch = useDispatch();
+  const [transactions, setTransactions] = React.useState([]);
+  const [showForm, setShowForm] = React.useState(false);
+  const [formMode, setFormMode] = React.useState("add");
+  const [selectedTransaction, setSelectedTransaction] = React.useState({});
+
+  const getWhereConditions = () => {
+    const tempConditions = [];
+
+    //type condition filter
+    if (filters.type !== "") {
+      tempConditions.push(where("type", "==", filters.type));
+    }
+
+    //frequency condition filter
+    if (filters.frequency !== "custom-range") {
+      if (filters.frequency === "7") {
+        tempConditions.push(
+          where("date", ">=", moment().subtract(7, "days").format("YYYY-MM-DD"))
+        );
+      } else if (filters.frequency === "30") {
+        tempConditions.push(
+          where(
+            "date",
+            ">=",
+            moment().subtract(30, "days").format("YYYY-MM-DD")
+          )
+        );
+      } else if (filters.frequency === "365") {
+        tempConditions.push(
+          where(
+            "date",
+            ">=",
+            moment().subtract(365, "days").format("YYYY-MM-DD")
+          )
+        );
+      }
+    } else {
+      const fromDate = moment(filters.dateRange[0]).format("YYYY-MM-DD");
+      const toDate = moment(filters.dateRange[1]).format("YYYY-MM-DD");
+      tempConditions.push(
+        where("date", ">=", fromDate),
+        where("date", "<=", toDate)
+      );
+    }
+
+    return tempConditions;
+  };
+
+  const getData = async () => {
+    try {
+      const whereConditions = getWhereConditions(filters);
+      dispatch(ShowLoading());
+      const qry = query(
+        collection(fireDb, `users/${user.id}/transactions`),
+        orderBy("date", "desc"),
+        ...whereConditions
+      );
+      const response = await getDocs(qry);
+      const data = response.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTransactions(data);
+      dispatch(HideLoading());
+    } catch (error) {
+      showNotification({
+        title: "Error getting transactions",
+        color: "red",
+      });
+      dispatch(HideLoading());
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, [filters]);
+
   return (
-    <div>Home</div>
-  )
+    <Box m={20}>
+      <Header />
+      <div className="container">
+        <Card
+          sx={{
+            height: "82vh",
+          }}
+          shadow="md"
+          withBorder
+          mt={20}
+        >
+          <div className="flex justify-between">
+            <div>
+              <Filters
+                filters={filters}
+                setFilters={setFilters}
+                getData={getData}
+              />
+            </div>
+
+            <div>
+              <Button
+                color="teal"
+                onClick={() => {
+                  setShowForm(true);
+                  setFormMode("add");
+                }}
+              >
+                Add Transaction
+              </Button>
+            </div>
+          </div>
+
+          <TransactionTable
+            transactions={transactions}
+            setSelectedTransaction={setSelectedTransaction}
+            setFormMode={setFormMode}
+            setShowForm={setShowForm}
+            getData={getData}
+          />
+        </Card>
+      </div>
+
+      <Modal
+        size="lg"
+        title={formMode === "add" ? "Add Transaction" : "Edit Transaction"}
+        opened={showForm}
+        onClose={() => setShowForm(false)}
+        centered
+      >
+        <TransactionForm
+          formMode={formMode}
+          setFormMode={setFormMode}
+          setShowForm={setShowForm}
+          showForm={showForm}
+          transactionData={selectedTransaction}
+          getData={getData}
+        />
+      </Modal>
+    </Box>
+  );
 }
 
-export default Home
+export default Home;
