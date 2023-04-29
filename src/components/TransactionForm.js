@@ -102,7 +102,6 @@ function TransactionForm({
                 { label: "School", value: "school" },
                 { label: "Salary", value: "salary" },
                 { label: "Others", value: "others" },
-                { label: "Business", value: "business" },
               ]}
               {...transactionForm.getInputProps("category")}
             />

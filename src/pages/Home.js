@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
-import { Box, Button, Card, Modal } from "@mantine/core";
+import { Box, Button, Card, Divider, Group, Modal } from "@mantine/core";
 import TransactionForm from "../components/TransactionForm";
 import { showNotification } from "@mantine/notifications";
 import { useDispatch } from "react-redux";
@@ -10,8 +10,10 @@ import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import TransactionTable from "../components/TransactionTable";
 import Filters from "../components/Filters";
 import moment from "moment/moment";
+import Analytics from "../components/Analytics";
 
 function Home() {
+  const [view, setView] = React.useState("table");
   const [filters, setFilters] = React.useState({
     type: "",
     frequency: "7",
@@ -108,7 +110,7 @@ function Home() {
           withBorder
           mt={20}
         >
-          <div className="flex justify-between">
+          <div className="flex justify-between items-end">
             <div>
               <Filters
                 filters={filters}
@@ -117,7 +119,23 @@ function Home() {
               />
             </div>
 
-            <div>
+            <Group>
+              <Button.Group>
+                <Button
+                  color="teal"
+                  variant={view === "table" ? "filled" : "outline"}
+                  onClick={() => setView("table")}
+                >
+                  Grid
+                </Button>
+                <Button
+                  color="teal"
+                  variant={view === "analytics" ? "filled" : "outline"}
+                  onClick={() => setView("analytics")}
+                >
+                  Analytics
+                </Button>
+              </Button.Group>
               <Button
                 color="teal"
                 onClick={() => {
@@ -127,16 +145,19 @@ function Home() {
               >
                 Add Transaction
               </Button>
-            </div>
+            </Group>
           </div>
-
-          <TransactionTable
-            transactions={transactions}
-            setSelectedTransaction={setSelectedTransaction}
-            setFormMode={setFormMode}
-            setShowForm={setShowForm}
-            getData={getData}
-          />
+          <Divider mt={20} />
+          {view === "table" && 
+            <TransactionTable
+              transactions={transactions}
+              setSelectedTransaction={setSelectedTransaction}
+              setFormMode={setFormMode}
+              setShowForm={setShowForm}
+              getData={getData}
+            />
+          }
+          {view === "analytics" && <Analytics transactions={transactions}/>}
         </Card>
       </div>
 

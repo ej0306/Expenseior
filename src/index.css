@@ -59,8 +59,10 @@ input{
 
 .container{
   height: 85vh;
+  
 }
 
 .mantine-1rvnwq9{
   height: 100% !important;
+  overflow-y: scroll !important ;
 }

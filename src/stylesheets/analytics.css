@@ -1,0 +1,31 @@
+.totalTransaction {
+  box-shadow: 0 0 0 1px #e1e1e1;
+  padding: 20px;
+}
+
+.totalTurnover {
+  box-shadow: 0 0 0 1px #e1e1e1;
+  padding: 20px;
+}
+
+.box-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(85, 82, 82);
+}
+
+p {
+  color: #3d3b3b;
+}
+
+.incomeCategories {
+    box-shadow: 0 0 0 1px #e1e1e1;
+    padding: 20px;
+    width: 40%;
+}
+
+.expensesCategories {
+    box-shadow: 0 0 0 1px #e1e1e1;
+    padding: 20px;
+    width: 40%;
+}

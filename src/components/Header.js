@@ -8,7 +8,7 @@ function Header() {
       <Card shadow="md" p={20} withBorder>
         <div className="flex justify-between">
           <Text size="xl" color="teal" variant="text" weight="bold">
-            SHEYMONEY LITE
+            EXPENSEIOR
           </Text>
           <Text>{user?.name}</Text>
         </div>
