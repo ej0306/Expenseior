@@ -125,7 +125,7 @@ function Analytics({ transactions }) {
         </div>
       </Group>
 
-      <Group mt={20}>
+      <Group mt={20} grow>
         <div className="incomeCategories">
           <h1 className="box-title">Income Categories</h1>
           <Divider my={20} />
@@ -149,7 +149,7 @@ function Analytics({ transactions }) {
                 <Progress
                   value={incomeTransactionCategoriesPercentage}
                   label={incomeTransactionCategoriesPercentage.toFixed(2) + "%"}
-                  size="xl"
+                  size={22}
                 />
               </div>
             );
@@ -180,7 +180,7 @@ function Analytics({ transactions }) {
                 color="orange"
                   value={expensesTransactionCategoriesPercentage}
                   label={expensesTransactionCategoriesPercentage.toFixed(2) + "%"}
-                  size="xl"
+                  size={22}
                 />
               </div>
             );

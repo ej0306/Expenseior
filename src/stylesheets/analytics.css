@@ -1,11 +1,13 @@
 .totalTransaction {
   box-shadow: 0 0 0 1px #e1e1e1;
   padding: 20px;
+  width: 350px;
 }
 
 .totalTurnover {
   box-shadow: 0 0 0 1px #e1e1e1;
   padding: 20px;
+  width: 350px;
 }
 
 .box-title {
@@ -21,11 +23,11 @@ p {
 .incomeCategories {
     box-shadow: 0 0 0 1px #e1e1e1;
     padding: 20px;
-    width: 40%;
+  
 }
 
 .expensesCategories {
     box-shadow: 0 0 0 1px #e1e1e1;
     padding: 20px;
-    width: 40%;
+
 }

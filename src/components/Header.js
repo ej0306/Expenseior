@@ -1,4 +1,4 @@
-import { Card, Text } from "@mantine/core";
+import { Card, Group, Text } from "@mantine/core";
 import React from "react";
 
 function Header() {
@@ -10,7 +10,16 @@ function Header() {
           <Text size="xl" color="teal" variant="text" weight="bold">
             EXPENSEIOR
           </Text>
-          <Text>{user?.name}</Text>
+          <Group className="flex items-center">
+            {user?.name}
+            <i
+              className="ri-logout-box-r-line"
+              onClick={() => {
+                localStorage.removeItem("user");
+                window.location.reload();
+              }}
+            ></i>
+          </Group>
         </div>
       </Card>
     </div>

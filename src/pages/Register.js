@@ -93,7 +93,7 @@ function Register() {
         withBorder
       >
         <Title order={2} mb={5}>
-          REGISTER
+        EXPENSEIOR - REGISTER
         </Title>
         <Divider variant="solid" color="gray" />
         <form action="" onSubmit={onSubmit}>

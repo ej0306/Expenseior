@@ -99,7 +99,7 @@ function Home() {
   }, [filters]);
 
   return (
-    <Box m={20}>
+    <Box mx={50}>
       <Header />
       <div className="container">
         <Card

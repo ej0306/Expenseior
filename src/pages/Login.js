@@ -95,7 +95,7 @@ function Login() {
         withBorder
       >
         <Title order={2} mb={5}>
-          LOGIN
+          EXPENSEIOR - LOGIN
         </Title>
         <Divider variant="solid" color="gray" />
         <form action="" onSubmit={onSubmit}>
