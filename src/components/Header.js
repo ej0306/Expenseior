@@ -1,4 +1,5 @@
-import { Card, Group, Text } from "@mantine/core";
+import { Card, Group, Text, Avatar } from "@mantine/core";
+
 import React from "react";
 
 function Header() {
@@ -7,10 +8,11 @@ function Header() {
     <div>
       <Card shadow="md" p={20} withBorder>
         <div className="flex justify-between">
-          <Text size="xl" color="teal" variant="text" weight="bold">
+          <Text size="xl" color="black" variant="text" weight="bold">
             EXPENSEIOR
           </Text>
           <Group className="flex items-center">
+          <Avatar radius="xl" color="blue"/>
             {user?.name}
             <i
               className="ri-logout-box-r-line"

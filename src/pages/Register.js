@@ -9,7 +9,7 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
-
+import { IconAt } from "@tabler/icons-react";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { fireDb } from "../firebaseConfig";
 import cryptojs from "crypto-js";
@@ -41,7 +41,7 @@ function Register() {
       if (existingUser.size > 0) {
         //alert("Email already exists");
         showNotification({
-          title:"User already exists",
+          title: "User already exists",
           color: "red",
         });
         return;
@@ -51,23 +51,20 @@ function Register() {
           registerForm.values.password,
           "expenseior"
         ).toString();
-        const response = await addDoc(
-          collection(fireDb, "users"),
-          {
-            ...registerForm.values,
-            password: encryptedPassword,
-          }
-        );
+        const response = await addDoc(collection(fireDb, "users"), {
+          ...registerForm.values,
+          password: encryptedPassword,
+        });
         if (response.id) {
           //alert("User created successfully");
           showNotification({
-            title:"User created successfully",
+            title: "User created successfully",
             color: "green",
           });
         } else {
           //alert("User not created");
           showNotification({
-            title:"User not created",
+            title: "User not created",
             color: "red",
           });
         }
@@ -77,7 +74,7 @@ function Register() {
       dispatch(HideLoading());
       //alert("Something went wrong");
       showNotification({
-        title:"Something went wrong",
+        title: "Something went wrong",
         color: "red",
       });
     }
@@ -93,7 +90,7 @@ function Register() {
         withBorder
       >
         <Title order={2} mb={5}>
-        EXPENSEIOR - REGISTER
+          EXPENSEIOR - REGISTER
         </Title>
         <Divider variant="solid" color="gray" />
         <form action="" onSubmit={onSubmit}>
@@ -108,6 +105,7 @@ function Register() {
               label="Email"
               placeholder="Enter your email"
               name="email"
+              icon={<IconAt size="0.8rem" />}
               {...registerForm.getInputProps("email")}
             />
             <TextInput
