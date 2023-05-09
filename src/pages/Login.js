@@ -33,20 +33,34 @@ function Login() {
     event.preventDefault();
     try {
       dispatch(ShowLoading());
-      //check if user email already exists
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(loginForm.values.email)) {
+        showNotification({
+          title: "Invalid email address",
+          color: "red",
+        });
+        dispatch(HideLoading());
+        return;
+      }
+      
+      // Check if user email already exists
       const qry = query(
         collection(fireDb, "users"),
         where("email", "==", loginForm.values.email)
       );
       const existingUser = await getDocs(qry);
+      
       if (existingUser.size > 0) {
-        //decrypt password
+        // Decrypt password
         const decryptedPassword = cryptojs.AES.decrypt(
           existingUser.docs[0].data().password,
           "expenseior"
         ).toString(cryptojs.enc.Utf8);
+        
         if (decryptedPassword === loginForm.values.password) {
-          //alert("Login Successful!");
+          // Login Successful!
           showNotification({
             title: "Login Successful!",
             color: "green",
@@ -59,16 +73,14 @@ function Login() {
           localStorage.setItem("user", JSON.stringify(dataToPutInLocalStorage));
           navigate("/");
         } else {
-          //alert("Invalid Credentials!");
-    
+          // Invalid Credentials!
           showNotification({
             title: "Invalid Credentials!",
             color: "red",
           });
         }
       } else {
-        //alert("User does not exist!");
-
+        // User does not exist!
         showNotification({
           title: "User does not exist!",
           color: "red",
@@ -77,13 +89,14 @@ function Login() {
       dispatch(HideLoading());
     } catch (error) {
       dispatch(HideLoading());
-      //alert("Something went wrong!");
+      // Something went wrong!
       showNotification({
         title: "Something went wrong!",
         color: "red",
       });
     }
   };
+
 
   return (
     <div className="flex h-screen justify-center items-center">
