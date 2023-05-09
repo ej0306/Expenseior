@@ -31,6 +31,30 @@ function Register() {
     event.preventDefault();
     try {
       dispatch(ShowLoading());
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(registerForm.values.email)) {
+        showNotification({
+          title: "Invalid email address",
+          color: "red",
+        });
+        dispatch(HideLoading());
+        return;
+      }
+
+      // Password requirements
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+      if (!passwordRegex.test(registerForm.values.password)) {
+        showNotification({
+          title:
+            "Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 number",
+          color: "red",
+        });
+        dispatch(HideLoading());
+        return;
+      }
+      
       //check if user email already exists bn
       const qry = query(
         collection(fireDb, "users"),
@@ -39,7 +63,6 @@ function Register() {
       const existingUser = await getDocs(qry);
 
       if (existingUser.size > 0) {
-        //alert("Email already exists");
         showNotification({
           title: "User already exists",
           color: "red",
@@ -56,13 +79,11 @@ function Register() {
           password: encryptedPassword,
         });
         if (response.id) {
-          //alert("User created successfully");
           showNotification({
             title: "User created successfully",
             color: "green",
           });
         } else {
-          //alert("User not created");
           showNotification({
             title: "User not created",
             color: "red",
@@ -72,12 +93,12 @@ function Register() {
       dispatch(HideLoading());
     } catch (error) {
       dispatch(HideLoading());
-      //alert("Something went wrong");
       showNotification({
         title: "Something went wrong",
         color: "red",
       });
     }
+    
   };
 
   return (
