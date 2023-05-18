@@ -55,8 +55,8 @@ function Analytics({ transactions }) {
         <div className="totalTransaction">
           <h2 className="box-title">Total Transactions: {totalTransactions}</h2>
           <Divider my={20} />
-          <p>Income Transactions: {IncomeTransactions}</p>
-          <p>Expense Transactions: {ExpenseTransactions}</p>
+          <p>Income Transactions: {IncomeTransactions.toFixed(2)}</p>
+          <p>Expense Transactions: {ExpenseTransactions.toFixed(2)}</p>
 
           <Group>
             <RingProgress
@@ -89,11 +89,11 @@ function Analytics({ transactions }) {
 
         <div className="totalTurnover">
           <h2 className="box-title">
-            Total Turnover: ${totalTransactionsAmount}
+            Total Turnover: ${totalTransactionsAmount.toFixed(2)}
           </h2>
           <Divider my={20} />
-          <p>Income: ${totalIncomeAmount}</p>
-          <p>Expense: ${totalExpenseAmount}</p>
+          <p>Income: ${totalIncomeAmount.toFixed(2)}</p>
+          <p>Expense: ${totalExpenseAmount.toFixed(2)}</p>
 
           <Group>
             <RingProgress
