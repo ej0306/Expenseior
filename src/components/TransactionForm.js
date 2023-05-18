@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
 import { fireDb } from "../firebaseConfig";
 import moment from "moment";
+import background from "../images/background.jpg";
 
 function TransactionForm({
   formMode,
@@ -38,14 +39,14 @@ function TransactionForm({
           collection(fireDb, `users/${user.id}/transactions`),
           transactionForm.values
         );
-      }else{
+      } else {
         await setDoc(
           doc(fireDb, `users/${user.id}/transactions`, transactionData.id),
           transactionForm.values
         );
       }
       showNotification({
-        title: formMode === "add"? "Transaction Added" : "Transaction Updated",
+        title: formMode === "add" ? "Transaction Added" : "Transaction Updated",
         color: "green",
       });
       dispatch(HideLoading());
@@ -53,7 +54,8 @@ function TransactionForm({
       setShowForm(false);
     } catch (error) {
       showNotification({
-        title: formMode === "add"? "Error adding Transaction" : "Updating Error",
+        title:
+          formMode === "add" ? "Error adding Transaction" : "Updating Error",
         color: "red",
       });
       dispatch(HideLoading());
@@ -63,11 +65,20 @@ function TransactionForm({
   useEffect(() => {
     if (formMode === "edit") {
       transactionForm.setValues(transactionData);
-      transactionForm.setFieldValue('date', moment(transactionData.date, 'YYYY-MM-DD').format("YYYY-MM-DD"));
+      transactionForm.setFieldValue(
+        "date",
+        moment(transactionData.date, "YYYY-MM-DD").format("YYYY-MM-DD")
+      );
     }
   }, [transactionData]);
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundSize: "cover",
+        opacity: 0.8,
+      }}
+    >
       <form action="" onSubmit={onSubmit}>
         <Stack>
           <TextInput
@@ -134,7 +145,7 @@ function TransactionForm({
           />
 
           <Button color="teal" type="submit">
-            {formMode === "add"? "Add Transaction" : "Update Transaction"}
+            {formMode === "add" ? "Add Transaction" : "Update Transaction"}
           </Button>
         </Stack>
       </form>

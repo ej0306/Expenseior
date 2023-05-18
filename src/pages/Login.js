@@ -17,6 +17,8 @@ import { showNotification } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
+import logo from "../images/logo.png";
+import background from "../images/background.jpg";
 
 function Login() {
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ function Login() {
     event.preventDefault();
     try {
       dispatch(ShowLoading());
-      
+
       // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(loginForm.values.email)) {
@@ -44,21 +46,21 @@ function Login() {
         dispatch(HideLoading());
         return;
       }
-      
+
       // Check if user email already exists
       const qry = query(
         collection(fireDb, "users"),
         where("email", "==", loginForm.values.email)
       );
       const existingUser = await getDocs(qry);
-      
+
       if (existingUser.size > 0) {
         // Decrypt password
         const decryptedPassword = cryptojs.AES.decrypt(
           existingUser.docs[0].data().password,
           "expenseior"
         ).toString(cryptojs.enc.Utf8);
-        
+
         if (decryptedPassword === loginForm.values.password) {
           // Login Successful!
           showNotification({
@@ -69,7 +71,7 @@ function Login() {
             name: existingUser.docs[0].data().name,
             email: existingUser.docs[0].data().email,
             id: existingUser.docs[0].id,
-          }
+          };
           localStorage.setItem("user", JSON.stringify(dataToPutInLocalStorage));
           navigate("/");
         } else {
@@ -97,9 +99,11 @@ function Login() {
     }
   };
 
-
   return (
-    <div className="flex h-screen justify-center items-center">
+    <div
+      className="flex h-screen justify-center items-center"
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <Card
         sx={{
           width: 400,
@@ -108,7 +112,8 @@ function Login() {
         withBorder
       >
         <Title order={2} mb={5}>
-          EXPENSEIOR - LOGIN
+          <img src={logo} alt="Logo" width="60" height="50" />
+          EXPENSEIOR
         </Title>
         <Divider variant="solid" color="gray" />
         <form action="" onSubmit={onSubmit}>

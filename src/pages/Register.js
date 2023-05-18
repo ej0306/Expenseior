@@ -16,6 +16,8 @@ import cryptojs from "crypto-js";
 import { showNotification } from "@mantine/notifications";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
+import logo from "../images/logo.png";
+import background from "../images/background.jpg";
 
 function Register() {
   const dispatch = useDispatch();
@@ -54,7 +56,7 @@ function Register() {
         dispatch(HideLoading());
         return;
       }
-      
+
       //check if user email already exists bn
       const qry = query(
         collection(fireDb, "users"),
@@ -98,11 +100,13 @@ function Register() {
         color: "red",
       });
     }
-    
   };
 
   return (
-    <div className="flex h-screen justify-center items-center">
+    <div
+      className="flex h-screen justify-center items-center"
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <Card
         sx={{
           width: 400,
@@ -111,7 +115,8 @@ function Register() {
         withBorder
       >
         <Title order={2} mb={5}>
-          EXPENSEIOR - REGISTER
+          <img src={logo} alt="Logo" width="60" height="50" />
+          EXPENSEIOR
         </Title>
         <Divider variant="solid" color="gray" />
         <form action="" onSubmit={onSubmit}>

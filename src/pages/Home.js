@@ -11,6 +11,7 @@ import TransactionTable from "../components/TransactionTable";
 import Filters from "../components/Filters";
 import moment from "moment/moment";
 import Analytics from "../components/Analytics";
+import background from "../images/background.jpg";
 
 function Home() {
   const [view, setView] = React.useState("table");
@@ -99,85 +100,87 @@ function Home() {
   }, [filters]);
 
   return (
-    <Box mx={50}>
-      <Header />
-      <div className="container">
-        <Card
-          sx={{
-            height: "82vh",
-          }}
-          shadow="md"
-          withBorder
-          mt={20}
-        >
-          <div className="flex justify-between items-end">
-            <div>
-              <Filters
-                filters={filters}
-                setFilters={setFilters}
+    <div style={{ backgroundImage: `url(${background})` }}>
+      <Box mx={50} style={{ opacity: 0.95 }}>
+        <Header />
+        <div className="container">
+          <Card
+            sx={{
+              height: "82vh",
+            }}
+            shadow="md"
+            withBorder
+            mt={20}
+          >
+            <div className="flex justify-between items-end">
+              <div>
+                <Filters
+                  filters={filters}
+                  setFilters={setFilters}
+                  getData={getData}
+                />
+              </div>
+
+              <Group>
+                <Button.Group>
+                  <Button
+                    color="teal"
+                    variant={view === "table" ? "filled" : "outline"}
+                    onClick={() => setView("table")}
+                  >
+                    Grid
+                  </Button>
+                  <Button
+                    color="teal"
+                    variant={view === "analytics" ? "filled" : "outline"}
+                    onClick={() => setView("analytics")}
+                  >
+                    Analytics
+                  </Button>
+                </Button.Group>
+                <Button
+                  color="teal"
+                  onClick={() => {
+                    setShowForm(true);
+                    setFormMode("add");
+                  }}
+                >
+                  Add Transaction
+                </Button>
+              </Group>
+            </div>
+            <Divider mt={20} />
+            {view === "table" && (
+              <TransactionTable
+                transactions={transactions}
+                setSelectedTransaction={setSelectedTransaction}
+                setFormMode={setFormMode}
+                setShowForm={setShowForm}
                 getData={getData}
               />
-            </div>
+            )}
+            {view === "analytics" && <Analytics transactions={transactions} />}
+          </Card>
+        </div>
 
-            <Group>
-              <Button.Group>
-                <Button
-                  color="teal"
-                  variant={view === "table" ? "filled" : "outline"}
-                  onClick={() => setView("table")}
-                >
-                  Grid
-                </Button>
-                <Button
-                  color="teal"
-                  variant={view === "analytics" ? "filled" : "outline"}
-                  onClick={() => setView("analytics")}
-                >
-                  Analytics
-                </Button>
-              </Button.Group>
-              <Button
-                color="teal"
-                onClick={() => {
-                  setShowForm(true);
-                  setFormMode("add");
-                }}
-              >
-                Add Transaction
-              </Button>
-            </Group>
-          </div>
-          <Divider mt={20} />
-          {view === "table" && 
-            <TransactionTable
-              transactions={transactions}
-              setSelectedTransaction={setSelectedTransaction}
-              setFormMode={setFormMode}
-              setShowForm={setShowForm}
-              getData={getData}
-            />
-          }
-          {view === "analytics" && <Analytics transactions={transactions}/>}
-        </Card>
-      </div>
-
-      <Modal
-        size="lg"
-        title={formMode === "add" ? "Add Transaction" : "Edit Transaction"}
-        opened={showForm}
-        onClose={() => setShowForm(false)}
-        centered
-      >
-        <TransactionForm
-          formMode={formMode}
-          setFormMode={setFormMode}
-          setShowForm={setShowForm}
-          showForm={showForm}
-          transactionData={selectedTransaction}
-          getData={getData}
-        />
-      </Modal>
-    </Box>
+        <Modal
+          size="lg"
+          title={formMode === "add" ? "Add Transaction" : "Edit Transaction"}
+          opened={showForm}
+          onClose={() => setShowForm(false)}
+          centered
+        >
+          <TransactionForm
+            formMode={formMode}
+            setFormMode={setFormMode}
+            setShowForm={setShowForm}
+            showForm={showForm}
+            transactionData={selectedTransaction}
+            getData={getData}
+          />
+        </Modal>
+      </Box>
+    </div>
   );
 }
 

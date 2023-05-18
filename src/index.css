@@ -1,36 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-*{
-  font-family: 'Montserrat', sans-serif !important;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+* {
+  font-family: "Montserrat", sans-serif !important;
 }
-.h-screen{
-  height:  100vh;
+.h-screen {
+  height: 100vh;
 }
 
-.flex{
+.flex {
   display: flex;
 }
-.flex-column{
+.flex-column {
   flex-direction: column;
 }
 
-.justify-center{
+.justify-center {
   justify-content: center;
 }
-.justify-between{
+.justify-between {
   justify-content: space-between;
 }
-.justify-end{
+.justify-end {
   justify-content: flex-end;
 }
 
-.items-center{
+.items-center {
   align-items: center;
 }
-.items-end{
+.items-end {
   align-items: flex-end;
 }
 
-.loader-parent{
+.loader-parent {
   position: absolute;
   height: 100vh;
   inset: 0;
@@ -38,14 +38,14 @@
   justify-content: center;
   display: flex;
   z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.651)
+  background-color: rgba(255, 255, 255, 0.651);
 }
 
-.w-50{
+.w-50 {
   width: 50%;
 }
 
-.w-100{
+.w-100 {
   width: 100%;
 }
 
@@ -54,16 +54,15 @@ i {
   cursor: pointer;
 }
 
-input{
+input {
   border: 1px solid black !important;
 }
 
-.container{
+.container {
   height: 85vh;
-  
 }
 
-.mantine-1rvnwq9{
+.mantine-1rvnwq9 {
   height: 100% !important;
   overflow-y: scroll !important ;
 }
