@@ -2,6 +2,12 @@
 *{
   font-family: 'Montserrat', sans-serif !important;
 }
+
+/* .html{
+  color-scheme: dark;
+} */
+
+
 .h-screen{
   height:  100vh;
 }
@@ -23,12 +29,21 @@
   justify-content: flex-end;
 }
 
+/* The background color of the whole page */
 .items-center{
   align-items: center;
+  background-color: transparent;
 }
+
 .items-end{
   align-items: flex-end;
+  /* background-color: aquamarine; */
+  background-color: transparent;
 }
+
+/* .body{
+  background-color: blueviolet;
+} */
 
 .loader-parent{
   position: absolute;
@@ -38,7 +53,7 @@
   justify-content: center;
   display: flex;
   z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.651)
+  background-color: transparent
 }
 
 .w-50{
@@ -54,8 +69,9 @@ i {
   cursor: pointer;
 }
 
+/* The input boxes */
 input{
-  border: 1px solid black !important;
+  border: 1px solid rgb(0, 0, 0) !important;
 }
 
 .container{
@@ -63,7 +79,69 @@ input{
   
 }
 
+/* Register page box */
+.mantine-kqtkfz{
+  background-color: transparent;
+}
+
+.mantine-17123y{
+  background-color: transparent;
+}
+
+/* The login page box and the register page box */
+.mantine-ylyj0r{
+  /* background-color: rgb(131, 27, 228); */
+  background-color: rgb(37, 96, 81);
+  /* background-color: transparent; */
+  /* cursor: crosshair; */
+}
+
+/* The second box made on the analytics page */
 .mantine-1rvnwq9{
   height: 100% !important;
   overflow-y: scroll !important ;
+  background-color: #ffffff;
+}
+
+
+/* heading bar of the analytics box */
+.mantine-9gkgch{
+  background-color: rgb(24, 150, 102);
+}
+
+
+/* The boxes of the anayltics page */
+.mantine-l7123y{
+  background-color: transparent;
+}
+
+/* .login{
+    background-color: #000000;
+    padding: 20px;  
+} */
+/* 
+:root {
+  --background-color: #000000;
+  --text-color: #333;
+} */
+
+.ThemeToggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ThemeToggle button {
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.ThemeToggle button:hover {
+  text-decoration: underline;
+}
+
+.homePage {
+  background-color: rgb(255, 255, 255);
 }

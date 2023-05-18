@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Header from "../components/Header";
 import { Box, Button, Card, Divider, Group, Modal } from "@mantine/core";
 import TransactionForm from "../components/TransactionForm";
@@ -11,9 +11,18 @@ import TransactionTable from "../components/TransactionTable";
 import Filters from "../components/Filters";
 import moment from "moment/moment";
 import Analytics from "../components/Analytics";
+import ThemeToggle from "../ThemeToggle";
+import { ThemeContext } from "../ThemeContext";
 
 function Home() {
   const [view, setView] = React.useState("table");
+  const { theme, toggleTheme, themeStyles } = useContext(ThemeContext);
+  // const [key, setKey] = useState(0);
+
+  const handleToggleTheme = () => {
+    toggleTheme();
+    // setKey((prevKey) => prevKey + 1);
+  };
   const [filters, setFilters] = React.useState({
     type: "",
     frequency: "7",
@@ -99,17 +108,21 @@ function Home() {
   }, [filters]);
 
   return (
+    <div>
     <Box mx={50}>
       <Header />
-      <div className="container">
+      <div className="container" style={themeStyles[theme].itemsCenter}> 
+      <ThemeToggle onClick={handleToggleTheme}/>
+        
         <Card
           sx={{
-            height: "82vh",
+            height: "82vh", backgroundColor: themeStyles[theme]?.mantine9gkgch?.backgroundColor,
           }}
           shadow="md"
           withBorder
           mt={20}
         >
+
           <div className="flex justify-between items-end">
             <div>
               <Filters
@@ -178,6 +191,7 @@ function Home() {
         />
       </Modal>
     </Box>
+    </div>
   );
 }
 

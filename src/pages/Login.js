@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useForm } from "@mantine/form";
 import {
   Anchor,
@@ -17,10 +17,20 @@ import { showNotification } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
+import ThemeToggle from "../ThemeToggle";
+import { ThemeContext } from "../ThemeContext";
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { theme, toggleTheme, themeStyles } = useContext(ThemeContext);
+  // const [key, setKey] = useState(0);
+
+  const handleToggleTheme = () => {
+    toggleTheme();
+    // setKey((prevKey) => prevKey + 1);
+  };
+
   const loginForm = useForm({
     initialValues: {
       name: "",
@@ -99,10 +109,13 @@ function Login() {
 
 
   return (
-    <div className="flex h-screen justify-center items-center">
+    <div className="flex h-screen justify-center items-center" style={themeStyles[theme].itemsCenter}>
+      <ThemeToggle onClick={handleToggleTheme}/>
       <Card
+        className="mantine-ylyj0r"
         sx={{
           width: 400,
+          backgroundColor: themeStyles[theme]?.mantineylyj0r?.backgroundColor
         }}
         shadow="lg"
         withBorder

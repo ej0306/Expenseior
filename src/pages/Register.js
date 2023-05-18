@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import { useForm } from "@mantine/form";
 import {
   Anchor,
@@ -16,9 +16,18 @@ import cryptojs from "crypto-js";
 import { showNotification } from "@mantine/notifications";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
+import ThemeToggle from "../ThemeToggle";
+import { ThemeContext } from "../ThemeContext";
 
 function Register() {
   const dispatch = useDispatch();
+  const { theme, toggleTheme, themeStyles } = useContext(ThemeContext);
+  // const [key, setKey] = useState(0);
+
+  const handleToggleTheme = () => {
+    toggleTheme();
+    // setKey((prevKey) => prevKey + 1);
+  };
   const registerForm = useForm({
     initialValues: {
       name: "",
@@ -54,7 +63,7 @@ function Register() {
         dispatch(HideLoading());
         return;
       }
-      
+
       //check if user email already exists bn
       const qry = query(
         collection(fireDb, "users"),
@@ -98,14 +107,19 @@ function Register() {
         color: "red",
       });
     }
-    
   };
 
   return (
-    <div className="flex h-screen justify-center items-center">
+    // <div className="flex h-screen justify-center items-center" style={themeStyles[theme]['mantineYlyj0r']}>
+    <div className="flex h-screen justify-center items-center" style={themeStyles[theme].itemsCenter}>
+      <ThemeToggle onClick={handleToggleTheme}/>
+      {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
       <Card
+        className="mantine-ylyj0r"
         sx={{
           width: 400,
+          // backgroundColor: themeStyles[theme]?.mantineYlyj0r?.backgroundColor,
+          backgroundColor: themeStyles[theme]?.mantineylyj0r?.backgroundColor
         }}
         shadow="lg"
         withBorder
