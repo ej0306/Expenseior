@@ -1,4 +1,4 @@
-import { Group, Table } from "@mantine/core";
+import { Group, Grid, Text, Center } from "@mantine/core";
 import React from "react";
 import moment from "moment";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,7 @@ import { HideLoading, ShowLoading } from "../redux/alertSlice";
 import { showNotification } from "@mantine/notifications";
 import { deleteDoc, doc } from "firebase/firestore";
 import { fireDb } from "../firebaseConfig";
+import "../stylesheets/transactiontable.css";
 
 function TransactionTable({
   transactions,
@@ -36,49 +37,55 @@ function TransactionTable({
   };
 
   const getRows = transactions.map((transaction) => (
-    <tr key={transaction.name}>
-      <td>{transaction.name}</td>
-      <td>{transaction.type?.toUpperCase()}</td>
-      <td>{transaction.amount}</td>
-      <td>{moment(transaction.date).format("DD-MM-YYYY")}</td>
-      <td>{transaction.category}</td>
-      <td>{transaction.reference}</td>
-      <td>
-        <Group>
-          <i
-            className="ri-edit-2-line"
-            onClick={() => {
-              setSelectedTransaction(transaction);
-              setFormMode("edit");
-              setShowForm(true);
-            }}
-          ></i>
-          <i
-            className="ri-delete-bin-line"
-            onClick={() => {
-              deleteTransaction(transaction.id);
-            }}
-          ></i>
-        </Group>
-      </td>
-    </tr>
+    <Grid key={transaction.name} grow gutter="sm">
+      <Grid.Col span={4} justify="space-between">
+        <div className="transaction">
+          <Text className="transaction-item-name">
+            {transaction.name}
+            <Group
+              style={{
+                display: "inline-block",
+              }}
+            >
+              <div className="icons">
+                <i
+                  className="ri-edit-2-line"
+                  onClick={() => {
+                    setSelectedTransaction(transaction);
+                    setFormMode("edit");
+                    setShowForm(true);
+                  }}
+                ></i>
+                <i
+                  className="ri-delete-bin-line"
+                  onClick={() => {
+                    deleteTransaction(transaction.id);
+                  }}
+                ></i>
+              </div>
+            </Group>
+          </Text>
+
+          <Text className="transaction-item">$: {transaction.amount}</Text>
+
+          <Text className="transaction-item">
+            Date: {moment(transaction.date).format("DD-MM-YYYY")}
+          </Text>
+
+          <Text className="transaction-item">
+            Category: {transaction.category?.toUpperCase()}
+          </Text>
+
+          <Text className="transaction-item">Ref: {transaction.reference}</Text>
+        </div>
+      </Grid.Col>
+    </Grid>
   ));
 
   return (
-    <Table verticalSpacing="md" fontSize="sm" striped>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Category</th>
-          <th>Reference</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>{getRows}</tbody>
-    </Table>
+    <div>
+      <Grid gutter="xl">{getRows}</Grid>
+    </div>
   );
 }
 

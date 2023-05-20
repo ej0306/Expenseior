@@ -72,13 +72,7 @@ function TransactionForm({
     }
   }, [transactionData]);
   return (
-    <div
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: "cover",
-        opacity: 0.8,
-      }}
-    >
+    <div>
       <form action="" onSubmit={onSubmit}>
         <Stack>
           <TextInput

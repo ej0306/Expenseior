@@ -1,15 +1,13 @@
 import { Group, Select } from "@mantine/core";
 import React, { useEffect } from "react";
-import { DatePickerInput } from '@mantine/dates';
-
+import { DatePickerInput } from "@mantine/dates";
 
 function Filters({ setFilters, filters }) {
-
   return (
     <Group>
       <Select
-        label="Select Frequency"
-        placeholder="Select Frequency"
+        label="Select Date"
+        placeholder="Select Date"
         data={[
           { label: "Last Week", value: "7" },
           { label: "Last Month", value: "30" },
@@ -20,15 +18,17 @@ function Filters({ setFilters, filters }) {
         onChange={(value) => setFilters({ ...filters, frequency: value })}
         name="frequency"
       />
-      {filters.frequency === "custom-range" && <DatePickerInput
-        size="sm"
-        type="range"
-        label="Pick dates range"
-        placeholder="Pick dates range"
-        onChange={(value) => setFilters({ ...filters, dateRange: value })}
-        mx="auto"
-        maw={400}
-      />}
+      {filters.frequency === "custom-range" && (
+        <DatePickerInput
+          size="sm"
+          type="range"
+          label="Pick dates range"
+          placeholder="Pick dates range"
+          onChange={(value) => setFilters({ ...filters, dateRange: value })}
+          mx="auto"
+          maw={400}
+        />
+      )}
 
       <Select
         label="Select Type"
