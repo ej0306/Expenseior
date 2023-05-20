@@ -107,6 +107,7 @@ function Login() {
       <Card
         sx={{
           width: 400,
+          opacity: 0.95,
         }}
         shadow="lg"
         withBorder
