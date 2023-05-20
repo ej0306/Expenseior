@@ -5,6 +5,9 @@ In the project directory, you can run:
 ### `npm install`
 To install npm and its dependencies
 
+
+
+## Option: if encountered problems with moment, icons, and buttons
 ### `npm i moment`
 To install React component for the moment date library.
 
