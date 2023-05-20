@@ -12,9 +12,12 @@ function Header() {
             <img src={logo} alt="Logo" width="60" height="50" />
             EXPENSEIOR
           </Text>
-          <Group className="flex items-center">
+          <Group
+            className="flex items-center"
+            style={{ fontWeight: "bold", fontSize: 22 }}
+          >
             <Avatar radius="xl" color="blue" />
-            {user?.name}
+            {user?.name.toUpperCase()}
             <i
               className="ri-logout-box-r-line"
               onClick={() => {
