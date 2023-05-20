@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
 * {
   font-family: "Montserrat", sans-serif !important;
 }
+
 .h-screen {
   height: 100vh;
 }
@@ -9,6 +11,7 @@
 .flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
@@ -16,9 +19,11 @@
 .justify-center {
   justify-content: center;
 }
+
 .justify-between {
   justify-content: space-between;
 }
+
 .justify-end {
   justify-content: flex-end;
 }
@@ -26,6 +31,7 @@
 .items-center {
   align-items: center;
 }
+
 .items-end {
   align-items: flex-end;
 }
@@ -64,5 +70,25 @@ input {
 
 .mantine-1rvnwq9 {
   height: 100% !important;
-  overflow-y: scroll !important ;
+  overflow-y: scroll !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  /* Adjust styles for small screens */
+  .w-50 {
+    width: 100%;
+  }
+
+  .flex-column {
+    flex-direction: column;
+  }
+
+  .justify-end {
+    justify-content: flex-start;
+  }
+
+  .items-end {
+    align-items: flex-start;
+  }
 }
