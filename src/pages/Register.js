@@ -111,6 +111,10 @@ function Register() {
         sx={{
           width: 400,
           opacity: 0.95,
+          borderRadius: 15,
+          boxShadow: "10px 5px 5px rgb(128, 128, 128)",
+          border: "1rem solid",
+          borderColor: "black",
         }}
         shadow="lg"
         withBorder
