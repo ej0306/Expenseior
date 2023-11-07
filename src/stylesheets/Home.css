@@ -1,7 +1,6 @@
 /* Home.module.css */
-.backgroundImage {
-  background-repeat: no-repeat;
-  background-size: cover;
+.bgImage {
+  background-image: url("../images/background.jpg");
 }
 
 .boxStyle {
@@ -31,7 +30,7 @@
 
 @media only screen and (max-width: 415px) {
   .home-container {
-    width: 380px; /* Set width to 90% of the viewport width */
+    width: 350px; /* Set width to 90% of the viewport width */
     margin-left: -30px;
   }
   .grid-analytics {
@@ -49,7 +48,7 @@
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 360px) {
   .home-container {
     width: 330px; /* Set width to 90% of the viewport width */
     margin-left: -35px;

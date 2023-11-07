@@ -17,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
 import logo from "../images/logo.png";
-import background from "../images/background.jpg";
 import "../stylesheets/Login.css"; // Import your CSS file
 
 function Login() {

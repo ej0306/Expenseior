@@ -1,4 +1,4 @@
-import { Group, Grid, Text, Center } from "@mantine/core";
+import { Group, Grid, Text } from "@mantine/core";
 import React from "react";
 import moment from "moment";
 import { useDispatch } from "react-redux";

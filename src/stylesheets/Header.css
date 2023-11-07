@@ -1,123 +1,40 @@
-/* Header.css - Updated with more responsive design */
-
 .card {
   opacity: 0.95;
-  padding: 1.25rem; /* Using rem for scalable padding */
 }
 
-.flex {
+.headerFlex {
   display: flex;
   justify-content: space-between;
 }
 
-.group {
+.userGroup {
   display: flex;
   align-items: center;
   font-weight: bold;
+  font-size: 22px;
 }
 
-/* Responsive font size and padding */
-.text-xl {
-  font-size: 1.25rem; /* Use rem for font sizes for scalability */
+.headercontainer {
+  width: 100%;
 }
 
-.avatar {
-  /* If you need specific styles for the avatar, they go here */
-}
-
-.ri-logout-box-r-line {
-  cursor: pointer; /* Makes it clear that it's clickable */
-  padding: 0.5rem; /* Adds space around the icon for easier clicking */
-  font-size: 1.5rem; /* Adjust the size of the icon if needed */
-  color: #333; /* Sets the icon color, choose what fits your design */
-}
-
-.ri-logout-box-r-line:hover {
-  color: #666; /* Darker on hover for visual feedback */
-  transform: scale(1.1); /* Slightly increase the size on hover */
-}
-
-/* Smaller devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .text-xl {
-    font-size: 1rem; /* Smaller text for small devices */
-  }
-
-  .group {
-    font-size: 1rem; /* Match text size in the group */
-  }
-
-  .card {
-    padding: 1rem; /* Smaller padding */
-  }
-}
-
-/* iPhone 12 specific styles, assuming a screen width of 415px */
 @media only screen and (max-width: 430px) {
-  .group {
-    font-size: 0.875rem; /* Example: even smaller font size for iPhone 12 */
-    margin-top: 10px;
-    display: inline-block;
-  }
   .headercontainer {
     width: 400px;
     margin-left: -35px;
-    margin-top: 10px;
-  }
-  .ri-logout-box-r-line {
-    padding: 0.4rem; /* Slightly less padding on smaller screens */
-    font-size: 1.2rem; /* Slightly smaller icon on smaller screens */
   }
 }
 
-/* iPhone 12 specific styles, assuming a screen width of 415px */
 @media only screen and (max-width: 415px) {
-  .group {
-    font-size: 0.875rem; /* Example: even smaller font size for iPhone 12 */
-    margin-top: 10px;
-    display: inline-block;
-  }
   .headercontainer {
-    width: 380px;
+    width: 350px;
     margin-left: -30px;
-    margin-top: 10px;
-  }
-  .ri-logout-box-r-line {
-    padding: 0.4rem; /* Slightly less padding on smaller screens */
-    font-size: 1.2rem; /* Slightly smaller icon on smaller screens */
   }
 }
 
-/* iPhone 12 specific styles, assuming a screen width of 390px */
 @media only screen and (max-width: 390px) {
-  .group {
-    font-size: 0.875rem; /* Example: even smaller font size for iPhone 12 */
-    margin-top: 10px;
-    display: inline-block;
-  }
   .headercontainer {
     width: 350px;
     margin-left: -35px;
-  }
-  .ri-logout-box-r-line {
-    padding: 0.4rem; /* Slightly less padding on smaller screens */
-    font-size: 1.2rem; /* Slightly smaller icon on smaller screens */
-  }
-}
-
-/* iPhone 12 specific styles, assuming a screen width of 390px */
-@media only screen and (max-width: 375px) {
-  .group {
-    font-size: 0.875rem; /* Example: even smaller font size for iPhone 12 */
-    margin-top: 10px;
-    display: inline-block;
-  }
-  .headercontainer {
-    width: 330px;
-    margin-left: -35px;
-  }
-  .ri-logout-box-r-line {
-    padding: 0.4rem; /* Slightly less padding on smaller screens */
-    font-size: 1.2rem; /* Slightly smaller icon on smaller screens */
   }
 }

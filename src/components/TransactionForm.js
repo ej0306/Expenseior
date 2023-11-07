@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
 import { fireDb } from "../firebaseConfig";
 import moment from "moment";
-import background from "../images/background.jpg";
 
 function TransactionForm({
   formMode,
@@ -70,7 +69,8 @@ function TransactionForm({
         moment(transactionData.date, "YYYY-MM-DD").format("YYYY-MM-DD")
       );
     }
-  }, [transactionData]);
+  }, [transactionData, formMode]); // Include only the variables that could change
+
   return (
     <div>
       <form action="" onSubmit={onSubmit}>

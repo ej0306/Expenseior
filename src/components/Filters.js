@@ -11,7 +11,7 @@ function Filters({ setFilters, filters }) {
         data={[
           { label: "Last Week", value: "7" },
           { label: "Last Month", value: "30" },
-          { label: "Last Year", value: "365" },
+          { label: "Current Year", value: "365" },
           { label: "Custom Range", value: "custom-range" },
         ]}
         value={filters.frequency}

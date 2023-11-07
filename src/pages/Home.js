@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import { Box, Button, Card, Divider, Group, Modal } from "@mantine/core";
 import TransactionForm from "../components/TransactionForm";
@@ -11,7 +11,6 @@ import TransactionTable from "../components/TransactionTable";
 import Filters from "../components/Filters";
 import moment from "moment/moment";
 import Analytics from "../components/Analytics";
-import background from "../images/background.jpg";
 import styles from "../stylesheets/Home.css"; // Importing CSS Module
 
 function Home() {
@@ -19,7 +18,7 @@ function Home() {
   const [view, setView] = React.useState("table");
   const [filters, setFilters] = React.useState({
     type: "",
-    frequency: "7",
+    frequency: "",
     dateRange: [],
   });
   const user = JSON.parse(localStorage.getItem("user"));
@@ -102,10 +101,7 @@ function Home() {
   }, [filters]);
 
   return (
-    <div
-      className={styles.backgroundImage}
-      style={{ backgroundImage: `url(${background})` }}
-    >
+    <div className="bgImage">
       <Box mx={50} className={styles.boxStyle}>
         <Header />
         <div className="home-container">
