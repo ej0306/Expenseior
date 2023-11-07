@@ -18,38 +18,7 @@ import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
 import logo from "../images/logo.png";
 import background from "../images/background.jpg";
-
-// Styles for iPhone resolution (for example, iPhone X)
-const containerStyle = {
-  display: "flex",
-  height: "100vh",
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundImage: `url(${background})`,
-};
-
-const cardStyle = {
-  width: "90%", // Adjust the width as needed
-  opacity: 0.95,
-  borderRadius: 15,
-  boxShadow: "10px 5px 5px rgb(128, 128, 128)",
-  border: "1rem solid",
-  borderColor: "black",
-};
-
-const titleStyle = {
-  fontSize: "1.5rem", // Adjust the font size as needed
-  marginBottom: "1rem",
-};
-
-const inputStyle = {
-  width: "100%",
-  marginBottom: "1rem",
-};
-
-const buttonStyle = {
-  width: "100%",
-};
+import "../stylesheets/Login.css"; // Import your CSS file
 
 function Login() {
   const dispatch = useDispatch();
@@ -132,11 +101,11 @@ function Login() {
 
   return (
     <div
-      className="flex h-screen justify-center items-center"
-      style={containerStyle}
+      className="container"
+      // Inline styles for dynamic values
     >
-      <Card sx={cardStyle} shadow="lg" withBorder>
-        <Title order={2} mb={5} style={titleStyle}>
+      <Card className="card" shadow="lg" withBorder>
+        <Title order={2} mb={5} className="title">
           <img src={logo} alt="Logo" width="60" height="50" />
           EXPENSEIOR
         </Title>
@@ -148,7 +117,7 @@ function Login() {
               placeholder="Enter your email"
               name="email"
               {...loginForm.getInputProps("email")}
-              style={inputStyle}
+              className="input"
             />
             <TextInput
               label="Password"
@@ -156,12 +125,11 @@ function Login() {
               name="password"
               type="password"
               {...loginForm.getInputProps("password")}
-              style={inputStyle}
+              className="input"
             />
-            <Button type="submit" color="teal" style={buttonStyle}>
+            <Button type="submit" color="teal" className="button">
               Login
             </Button>
-
             <Anchor href="/register">Don't have an account? Register</Anchor>
           </Stack>
         </form>
