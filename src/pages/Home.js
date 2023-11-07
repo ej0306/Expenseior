@@ -132,6 +132,7 @@ function Home() {
                   </Button>
                 </Button.Group>
                 <Button
+                  className="buttonAddTransaction"
                   color="teal"
                   onClick={() => {
                     setShowForm(true);

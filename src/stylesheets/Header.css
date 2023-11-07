@@ -23,6 +23,13 @@
     width: 400px;
     margin-left: -35px;
   }
+  .userGroup {
+    display: inline;
+    font-size: 15px;
+  }
+  .ri-logout-box-r-line {
+    margin-left: 10px;
+  }
 }
 
 @media only screen and (max-width: 415px) {
@@ -30,11 +37,41 @@
     width: 350px;
     margin-left: -30px;
   }
+  .userGroup {
+    display: inline;
+    font-size: 15px;
+  }
+  .ri-logout-box-r-line {
+    margin-left: 10px;
+  }
 }
 
 @media only screen and (max-width: 390px) {
   .headercontainer {
     width: 350px;
     margin-left: -35px;
+  }
+
+  .userGroup {
+    display: inline;
+    font-size: 15px;
+  }
+  .ri-logout-box-r-line {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .headercontainer {
+    width: 330px;
+    margin-left: -35px;
+  }
+
+  .userGroup {
+    display: inline;
+    font-size: 15px;
+  }
+  .ri-logout-box-r-line {
+    margin-left: 10px;
   }
 }

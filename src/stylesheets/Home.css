@@ -16,6 +16,13 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+.grid-analytics {
+  margin-top: 20px;
+}
+
+.buttonAddTransaction {
+  margin-top: 20px;
+}
 
 /* Add additional styles as needed */
 @media only screen and (max-width: 430px) {
@@ -24,6 +31,9 @@
     margin-left: -35px;
   }
   .grid-analytics {
+    margin-top: 10px;
+  }
+  .buttonAddTransaction {
     margin-top: 10px;
   }
 }
@@ -36,6 +46,9 @@
   .grid-analytics {
     margin-top: 10px;
   }
+  .buttonAddTransaction {
+    margin-top: 2px;
+  }
 }
 
 @media only screen and (max-width: 390px) {
@@ -46,6 +59,9 @@
   .grid-analytics {
     margin-top: 10px;
   }
+  .buttonAddTransaction {
+    margin-top: 2px;
+  }
 }
 
 @media only screen and (max-width: 360px) {
@@ -55,5 +71,8 @@
   }
   .grid-analytics {
     margin-top: 10px;
+  }
+  .buttonAddTransaction {
+    margin-top: 2px;
   }
 }
