@@ -1,6 +1,7 @@
 import { Group, Select } from "@mantine/core";
 import React, { useEffect } from "react";
 import { DatePickerInput } from "@mantine/dates";
+import "../stylesheets/datepicker.css";
 
 function Filters({ setFilters, filters }) {
   return (
@@ -20,6 +21,7 @@ function Filters({ setFilters, filters }) {
       />
       {filters.frequency === "custom-range" && (
         <DatePickerInput
+          className="datepicker"
           size="sm"
           type="range"
           label="Pick dates range"

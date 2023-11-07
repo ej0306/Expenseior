@@ -1,0 +1,32 @@
+.datepicker {
+  margin-top: 10px;
+}
+
+/* Add additional styles as needed */
+@media only screen and (max-width: 430px) {
+  .datepicker {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  .datepicker {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .datepicker {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .datepicker {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+}

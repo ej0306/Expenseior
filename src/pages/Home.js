@@ -104,8 +104,8 @@ function Home() {
     <div className="bgImage">
       <Box mx={50} className={styles.boxStyle}>
         <Header />
-        <div className="home-container">
-          <Card className={styles.cardStyle} shadow="md" withBorder mt={20}>
+        <div>
+          <Card className="cardStyle" shadow="md" withBorder mt={20}>
             <div className={styles.flex}>
               <div>
                 <Filters

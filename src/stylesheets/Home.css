@@ -1,5 +1,6 @@
 /* Home.module.css */
 .bgImage {
+  /*height: auto;*/
   background-image: url("../images/background.jpg");
 }
 
@@ -8,7 +9,8 @@
 }
 
 .cardStyle {
-  height: "82vh";
+  height: 100vh;
+  width: auto;
 }
 
 .flex {
@@ -34,7 +36,13 @@
     margin-top: 10px;
   }
   .buttonAddTransaction {
-    margin-top: 10px;
+    margin-top: px;
+  }
+
+  .cardStyle {
+    height: auto;
+    width: 350px; /* Set width to 90% of the viewport width */
+    margin-left: -30px;
   }
 }
 
@@ -49,6 +57,12 @@
   .buttonAddTransaction {
     margin-top: 2px;
   }
+
+  .cardStyle {
+    height: auto;
+    width: 350px; /* Set width to 90% of the viewport width */
+    margin-left: -30px;
+  }
 }
 
 @media only screen and (max-width: 390px) {
@@ -62,6 +76,12 @@
   .buttonAddTransaction {
     margin-top: 2px;
   }
+
+  .cardStyle {
+    height: auto;
+    width: 350px; /* Set width to 90% of the viewport width */
+    margin-left: -35px;
+  }
 }
 
 @media only screen and (max-width: 360px) {
@@ -74,5 +94,11 @@
   }
   .buttonAddTransaction {
     margin-top: 2px;
+  }
+
+  .cardStyle {
+    height: auto;
+    width: 330px; /* Set width to 90% of the viewport width */
+    margin-left: -35px;
   }
 }
