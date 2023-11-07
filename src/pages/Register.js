@@ -17,7 +17,7 @@ import { showNotification } from "@mantine/notifications";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertSlice";
 import logo from "../images/logo.png";
-import background from "../images/background.jpg";
+import "../stylesheets/Register.css"; // Import your CSS file here
 
 function Register() {
   const dispatch = useDispatch();
@@ -103,22 +103,8 @@ function Register() {
   };
 
   return (
-    <div
-      className="flex h-screen justify-center items-center"
-      style={{ backgroundImage: `url(${background})` }}
-    >
-      <Card
-        sx={{
-          width: 400,
-          opacity: 0.95,
-          borderRadius: 15,
-          boxShadow: "10px 5px 5px rgb(128, 128, 128)",
-          border: "1rem solid",
-          borderColor: "black",
-        }}
-        shadow="lg"
-        withBorder
-      >
+    <div className="flex-container">
+      <Card className="card-container" shadow="lg" withBorder>
         <Title order={2} mb={5}>
           <img src={logo} alt="Logo" width="60" height="50" />
           EXPENSEIOR

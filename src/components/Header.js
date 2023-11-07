@@ -1,21 +1,20 @@
+import React from "react";
 import { Card, Group, Text, Avatar } from "@mantine/core";
 import logo from "../images/logo.png";
-import React from "react";
+import "../stylesheets/Header.css"; // This imports the styles from 'Header.css'
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
+
   return (
-    <div>
-      <Card shadow="md" p={20} withBorder style={{ opacity: 0.95 }}>
+    <div className="headercontainer">
+      <Card shadow="md" p={20} withBorder className="card">
         <div className="flex justify-between">
           <Text size="xl" color="black" variant="text" weight="bold">
             <img src={logo} alt="Logo" width="60" height="50" />
             EXPENSEIOR
           </Text>
-          <Group
-            className="flex items-center"
-            style={{ fontWeight: "bold", fontSize: 22 }}
-          >
+          <Group className="group">
             <Avatar radius="xl" color="blue" />
             {user?.name.toUpperCase()}
             <i

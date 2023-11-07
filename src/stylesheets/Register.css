@@ -1,0 +1,40 @@
+/* Register.css */
+
+/* Default styles for larger screens */
+.flex-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/background.jpg");
+}
+
+.card-container {
+  width: 400px;
+  opacity: 0.95;
+  border-radius: 15px;
+  box-shadow: 10px 5px 5px rgb(128, 128, 128);
+  border: 1rem solid black;
+}
+
+@media (max-width: 1170px) {
+  /* Adjust styles for iPhone 12 or similar-sized screens here */
+  .flex-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/background.jpg");
+    /* Add specific styles for smaller screens */
+  }
+
+  .card-container {
+    width: 90%; /* Adjust the card width to fit the screen better */
+    max-width: 350px; /* Set a maximum width for the card */
+    opacity: 0.95;
+    border-radius: 15px;
+    box-shadow: 5px 3px 3px rgb(128, 128, 128);
+    border: 1rem solid black;
+    /* Add specific styles for smaller screens */
+  }
+}

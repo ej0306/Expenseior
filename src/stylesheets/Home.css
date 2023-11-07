@@ -1,0 +1,60 @@
+/* Home.module.css */
+.backgroundImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.boxStyle {
+  opacity: 0.95;
+}
+
+.cardStyle {
+  height: "82vh";
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Add additional styles as needed */
+@media only screen and (max-width: 430px) {
+  .home-container {
+    width: 400px; /* Set width to 90% of the viewport width */
+    margin-left: -35px;
+  }
+  .grid-analytics {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  .home-container {
+    width: 380px; /* Set width to 90% of the viewport width */
+    margin-left: -30px;
+  }
+  .grid-analytics {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .home-container {
+    width: 350px; /* Set width to 90% of the viewport width */
+    margin-left: -35px;
+  }
+  .grid-analytics {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .home-container {
+    width: 330px; /* Set width to 90% of the viewport width */
+    margin-left: -35px;
+  }
+  .grid-analytics {
+    margin-top: 10px;
+  }
+}

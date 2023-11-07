@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Box, Button, Card, Divider, Group, Modal } from "@mantine/core";
 import TransactionForm from "../components/TransactionForm";
@@ -12,8 +12,10 @@ import Filters from "../components/Filters";
 import moment from "moment/moment";
 import Analytics from "../components/Analytics";
 import background from "../images/background.jpg";
+import styles from "../stylesheets/Home.css"; // Importing CSS Module
 
 function Home() {
+  // ...rest of your states and functions
   const [view, setView] = React.useState("table");
   const [filters, setFilters] = React.useState({
     type: "",
@@ -100,19 +102,15 @@ function Home() {
   }, [filters]);
 
   return (
-    <div style={{ backgroundImage: `url(${background})` }}>
-      <Box mx={50} style={{ opacity: 0.95 }}>
+    <div
+      className={styles.backgroundImage}
+      style={{ backgroundImage: `url(${background})` }}
+    >
+      <Box mx={50} className={styles.boxStyle}>
         <Header />
-        <div className="container">
-          <Card
-            sx={{
-              height: "82vh",
-            }}
-            shadow="md"
-            withBorder
-            mt={20}
-          >
-            <div className="flex justify-between items-end">
+        <div className="home-container">
+          <Card className={styles.cardStyle} shadow="md" withBorder mt={20}>
+            <div className={styles.flex}>
               <div>
                 <Filters
                   filters={filters}
@@ -120,9 +118,8 @@ function Home() {
                   getData={getData}
                 />
               </div>
-
               <Group>
-                <Button.Group>
+                <Button.Group className="grid-analytics">
                   <Button
                     color="teal"
                     variant={view === "table" ? "filled" : "outline"}
@@ -162,7 +159,6 @@ function Home() {
             {view === "analytics" && <Analytics transactions={transactions} />}
           </Card>
         </div>
-
         <Modal
           size="lg"
           title={formMode === "add" ? "Add Transaction" : "Edit Transaction"}
@@ -174,7 +170,6 @@ function Home() {
             formMode={formMode}
             setFormMode={setFormMode}
             setShowForm={setShowForm}
-            showForm={showForm}
             transactionData={selectedTransaction}
             getData={getData}
           />
